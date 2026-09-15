@@ -1,0 +1,431 @@
+
+=== PAGE 1 ===
+Plan de trabajo PR MOD 2
+El proyecto se desarrollará entre los días 10 y 15 de septiembre.
+La presentación final será el 15 de septiembre.
+El objetivo es simular el proceso de creación de una pequeña startup de Ciencia de Datos: identificar un
+problema de mercado, crear una empresa capaz de resolverlo, definir un cliente, construir los datos de ese
+cliente y desarrollar una posible solución.
+10 de septiembre — Idea, problema y startup
+Objetivo del día
+Encontrar una idea suficientemente interesante y definir la startup.
+Cada equipo deberá comenzar identificando un problema real de mercado.
+No se debe comenzar pensando en qué algoritmo utilizar .
+Primero:
+Problema → Cliente → Datos → Solución.
+Trabajo del día
+Cada grupo deberá generar al menos 3 posibles ideas.
+Para cada idea deberá responder:
+¿Qué problema existe?
+¿Quién tiene ese problema?
+¿Por qué es importante?
+¿Qué pierde actualmente ese cliente?
+¿Cómo podrían ayudar los datos?
+¿Por qué alguien pagaría por resolverlo?
+Después se elegirá una de las ideas.
+• 
+• 
+• 
+• 
+• 
+• 
+1
+=== PAGE 2 ===
+Crear la startup
+Una vez seleccionada:
+Nombre.
+Sector .
+Qué hace.
+Cliente objetivo.
+Problema que resuelve.
+Propuesta de valor .
+Servicios o producto principal.
+Entregable del día
+Documento breve con:
+3 ideas iniciales.
+Idea elegida.
+Problema.
+Cliente objetivo.
+Nombre de la startup.
+Propuesta de valor .
+11 de septiembre — Cliente y modelo de datos
+Objetivo del día
+Crear el cliente que contratará a la startup.
+El cliente debe ser una empresa ficticia, pero suficientemente detallada para parecer real.
+Ficha del cliente
+Definir:
+Nombre.
+Sector .
+Actividad.
+Tamaño.
+Número de empleados.
+Número de clientes.
+Productos o servicios.
+Modelo de negocio.
+Procesos principales.
+Situación actual.
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+2
+=== PAGE 3 ===
+Problemas.
+Necesidades.
+Identificar datos disponibles
+Pensad:
+¿Qué información produciría esta empresa durante su actividad normal?
+Por ejemplo:
+Clientes.
+Ventas.
+Productos.
+Pedidos.
+Empleados.
+Proveedores.
+Inventario.
+Reservas.
+Incidencias.
+Facturas.
+Visitas.
+Campañas.
+Sensores.
+Diseñar la base de datos
+Crear:
+Tablas.
+Campos.
+Claves primarias.
+Claves foráneas.
+Relaciones.
+También deberá crearse un pequeño:
+Diagrama Entidad-Relación.
+Entregable del día
+Ficha completa del cliente.
+Lista de datos disponibles.
+Diseño de la base de datos.
+Diagrama de relaciones.
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+3
+=== PAGE 4 ===
+12 de septiembre — Datos + Website de la startup
+Objetivo del día
+Dar forma real tanto al cliente como a la startup.
+Parte 1 — Construcción de los datos
+Crear o conseguir los datos necesarios para representar la actividad del cliente.
+Los datos pueden ser:
+Públicos.
+Open Data.
+Kaggle.
+APIs.
+Sintéticos.
+Generados mediante código.
+Combinaciones de varias fuentes.
+Los datos deben ser coherentes.
+Por ejemplo:
+Una empresa con 200 clientes no debería tener 5 millones de operaciones diarias sin una justificación.
+Base de datos
+Se deberá comenzar a poblar la base de datos diseñada el día anterior .
+Parte 2 — Website mediante Vibe Coding
+Crear la página web de la startup.
+La web deberá incluir como mínimo:
+Nombre.
+Identidad visual.
+Qué hace la empresa.
+Problema que resuelve.
+Servicios.
+Sectores o clientes.
+Propuesta de valor .
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+4
+=== PAGE 5 ===
+Ejemplo de solución.
+Contacto.
+Puede utilizarse IA para acelerar el desarrollo mediante vibe coding.
+La web no necesita ser extremadamente compleja.
+Debe parecer la web real de una startup.
+Entregable del día
+Primera versión funcional de la base de datos.
+Datos cargados.
+Website funcional.
+Identidad básica de la startup.
+13 de septiembre — Análisis y descubrimiento del
+problema
+Objetivo del día
+Utilizar los datos para entender qué está ocurriendo realmente dentro de la empresa cliente.
+Antes de construir una solución hay que investigar .
+Análisis exploratorio
+Realizar:
+Limpieza de datos.
+Estadísticas.
+Visualizaciones.
+Identificación de patrones.
+Identificación de anomalías.
+Relaciones entre variables.
+Segmentaciones interesantes.
+Pregunta importante
+Intentad descubrir algo que el cliente no conociera.
+Por ejemplo:
+El cliente cree:
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+5
+=== PAGE 6 ===
+“Tenemos problemas de ventas los fines de semana.”
+Pero los datos muestran:
+“El verdadero problema está en determinados productos entre lunes y miércoles.”
+Detectar posibles problemas
+A partir del análisis, cada grupo deberá identificar al menos:
+3 problemas u oportunidades posibles.
+Después deberá seleccionar uno.
+Traducirlo a Ciencia de Datos
+Ejemplo:
+Problema empresarial:
+Tenemos demasiados clientes que dejan de comprar .
+Problema de datos:
+Identificar qué clientes tienen mayor probabilidad de abandonar .
+Entregable del día
+Análisis exploratorio.
+Visualizaciones.
+Principales conclusiones.
+3 posibles problemas encontrados.
+Problema seleccionado.
+Explicación de cómo puede abordarse mediante Ciencia de Datos.
+14 de septiembre — Solución, prototipo y
+preparación final
+Objetivo del día
+Convertir el análisis en una solución que pueda utilizar el cliente.
+Este será el día principal de desarrollo.
+• 
+• 
+• 
+• 
+• 
+• 
+6
+=== PAGE 7 ===
+Construcción de la solución
+Dependiendo del proyecto podrá utilizarse:
+Predicción.
+Clasificación.
+Clustering.
+NLP .
+Detección de anomalías.
+Sistemas de recomendación.
+Scoring.
+Optimización.
+Estadística.
+Visualización.
+Machine Learning.
+La técnica elegida debe responder al problema.
+Convertir el análisis en producto
+No queremos únicamente un notebook.
+Debe existir alguna forma mediante la que el cliente pueda utilizar la solución.
+Por ejemplo:
+Dashboard.
+Web App.
+Panel de control.
+Sistema de alertas.
+Sistema de predicción.
+Recomendador .
+Ranking.
+Mapa.
+Simulador .
+Informe automático.
+Ejemplo
+No mostrar únicamente:
+Accuracy: 91 %.
+Mostrar:
+Estos 20 clientes tienen mayor probabilidad de abandonar durante los próximos 30 días.
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+7
+=== PAGE 8 ===
+Y todavía mejor:
+Recomendamos contactar primero con estos cinco clientes.
+Preparación de la presentación
+La presentación deberá quedar terminada durante este día.
+Preparar:
+Startup.
+Cliente.
+Problema.
+Datos.
+Investigación.
+Descubrimiento.
+Solución.
+Demo.
+Valor generado.
+Entregable del día
+El proyecto deberá quedar prácticamente terminado:
+Website.
+Cliente.
+Base de datos.
+Datos.
+Análisis.
+Solución.
+Prototipo.
+Presentación.
+15 de septiembre — Presentación final
+Objetivo
+Presentar el proyecto como si fuese una reunión real entre la startup y el cliente.
+No debe parecer simplemente la presentación de un trabajo académico.
+La situación será:
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+8
+=== PAGE 9 ===
+Vuestra empresa ha sido contratada por un cliente para resolver un problema y ahora vais a
+presentar el resultado.
+Estructura recomendada
+1. Presentación de la startup
+¿Quiénes sois?
+¿Qué hacéis?
+2. El cliente
+¿Quién os contrató?
+¿Qué tipo de empresa es?
+3. El problema
+¿Qué estaba ocurriendo?
+4. Impacto
+¿Qué estaba perdiendo la empresa?
+Dinero, tiempo, clientes, eficiencia, etc.
+5. Los datos
+¿Qué información tenía disponible la empresa?
+Mostrar también brevemente el modelo de datos.
+6. Investigación
+¿Qué descubristeis?
+9
+=== PAGE 10 ===
+7. Solución
+¿Qué desarrollasteis?
+8. Demo
+Mostrar la solución funcionando.
+9. Resultado
+Explicar:
+¿Cómo puede utilizar ahora el cliente esta solución?
+10. Valor
+Terminar respondiendo:
+¿Por qué este cliente pagaría a vuestra startup por este producto?
+Resumen del calendario
+Día Objetivo principal Resultado
+10 septiembre Problema + Startup Idea y propuesta de valor
+11 septiembre Cliente + Base de datos Ficha cliente + modelo ER
+12 septiembre Datos + Website Datos + web de la startup
+13 septiembre Análisis Descubrimientos + problema seleccionado
+14 septiembre Solución + Prototipo Proyecto completo
+15 septiembre Presentación Demo y defensa del proyecto
+Regla de trabajo
+Cada día debe dejar una parte del proyecto cerrada.
+10
+=== PAGE 11 ===
+No se recomienda dejar para el último día:
+generación de datos,
+diseño de la base de datos,
+análisis,
+desarrollo de la solución,
+website.
+El 14 de septiembre el proyecto debería estar terminado.
+El 15 de septiembre es exclusivamente para presentar y defender el trabajo.
+• 
+• 
+• 
+• 
+• 
+11

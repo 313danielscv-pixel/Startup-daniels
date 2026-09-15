@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQData AI | Panel Control Cliente FreshMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .dash-container { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+        .sidebar { background: #0f172a; color: white; padding: 1.5rem; }
+        .sidebar h2 { font-size: 1.2rem; color: #34d399; margin-bottom: 2rem; }
+        .menu-item { padding: 0.8rem 1rem; color: #94a3b8; cursor: pointer; border-radius: 6px; margin-bottom: 0.4rem; }
+        .menu-item.active { background: #1e293b; color: white; font-weight: 600; border-left: 3px solid #34d399; }
+        .main-content { padding: 2rem; background: #f8fafc; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 2rem; }
+        .kpi-card { background: white; padding: 1.5rem; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .kpi-title { font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+        .kpi-value { font-size: 1.8rem; font-weight: 700; color: #0f172a; margin-top: 0.4rem; }
+        .kpi-tag { font-size: 0.8rem; margin-top: 0.3rem; }
+        .tag-green { color: #059669; font-weight: 600; }
+        .tag-red { color: #dc2626; font-weight: 600; }
+        
+        .alert-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 1.2rem; margin-bottom: 2rem; }
+        .alert-title { color: #991b1b; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .table-card { background: white; border-radius: 10px; border: 1px solid #e2e8f0; padding: 1.5rem; margin-bottom: 2rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { text-align: left; padding: 0.8rem; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
+        th { background: #f8fafc; color: #475569; font-weight: 600; }
+        .badge-risk-high { background: #fee2e2; color: #991b1b; padding: 3px 8px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; }
+        .badge-risk-mid { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; }
+        .btn-action { background: #059669; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+        .btn-action:hover { background: #047857; }
+    </style>
+</head>
+<body>
+    <div class="dash-container">
+        <aside class="sidebar">
+            <h2>🌱 ResQData AI</h2>
+            <div class="menu-item active">📊 Vista General Mermas</div>
+            <div class="menu-item">⚠️ Lotes en Riesgo (48h)</div>
+            <div class="menu-item">🏷️ Descuentos Dinámicos</div>
+            <div class="menu-item">🤝 Donaciones & ONG</div>
+            <div class="menu-item">📈 Reporte Impacto ESG</div>
+        </aside>
+
+        <main class="main-content">
+            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <div>
+                    <h1 style="font-size: 1.6rem; color: #0f172a;">Centro de Control de Mermas — FreshMarket S.A.</h1>
+                    <p style="color: #64748b; font-size: 0.9rem;">Monitoreo predictivo de caducidad en tiempo real | 5 Tiendas activas</p>
+                </div>
+                <div style="background: white; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.85rem; font-weight: 600;">
+                    Estado Sistema: <span style="color: #059669;">● ML Model Active v2.4</span>
+                </div>
+            </header>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-title">Merma Total Acumulada</div>
+                    <div class="kpi-value">17.422 €</div>
+                    <div class="kpi-tag tag-red">▲ 85% Concentrada en Platos Preparados</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Lotes en Riesgo Próx. 48h</div>
+                    <div class="kpi-value">14 Lotes</div>
+                    <div class="kpi-tag tag-red">⚠️ Requiere Acción Recomendada</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Ahorro Proyectado / Mes</div>
+                    <div class="kpi-value">4.250 €</div>
+                    <div class="kpi-tag tag-green">✓ Con Precios Dinámicos ResQData</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Alimentos Salvados (kg)</div>
+                    <div class="kpi-value">1.280 kg</div>
+                    <div class="kpi-tag tag-green">🌱 3.2 t CO2e Evitadas</div>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-title">
+                    🚨 Hallazgo Crítico del Modelo Predictivo
+                </div>
+                <p style="color: #7f1d1d; font-size: 0.9rem; margin-top: 0.4rem;">
+                    Las tiendas <strong>Vallecas, Eixample y Ruzafa</strong> acumulan el 93% de las pérdidas totales debido a la aplicación tardía de rebajas (solo el día de caducidad). Se recomienda activar la <strong>política de descuento dinámico automático al 30% a 48h</strong>.
+                </p>
+            </div>
+
+            <div class="table-card">
+                <h3 style="color: #0f172a; margin-bottom: 0.5rem;">Lotes Prioritarios con Riesgo de Caducidad (Acción Inmediata)</h3>
+                <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1rem;">Recomendación generada por el algoritmo de clasificación y aceleración de ventas.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Lote</th>
+                            <th>Producto</th>
+                            <th>Tienda</th>
+                            <th>Stock Restante</th>
+                            <th>Fecha Caducidad</th>
+                            <th>Riesgo ML</th>
+                            <th>Acción Recomendada ResQData</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#L-3892</td>
+                            <td>Sushi Pack Variado 12p</td>
+                            <td>FreshMarket Vallecas</td>
+                            <td>28 ud</td>
+                            <td>Mañana (15/09)</td>
+                            <td><span class="badge-risk-high">CRÍTICO (94%)</span></td>
+                            <td><strong>Aplicar Descuento -30% HOY</strong></td>
+                            <td><button class="btn-action" onclick="alert('Descuento del 30% aplicado automáticamente en TPV Vallecas')">Aplicar Rebaja</button></td>
+                        </tr>
+                        <tr>
+                            <td>#L-3901</td>
+                            <td>Dorada Limpia Ración 300g</td>
+                            <td>FreshMarket Eixample</td>
+                            <td>19 ud</td>
+                            <td>Mañana (15/09)</td>
+                            <td><span class="badge-risk-high">ALTO (88%)</span></td>
+                            <td><strong>Aplicar Descuento -30% HOY</strong></td>
+                            <td><button class="btn-action" onclick="alert('Descuento del 30% aplicado automáticamente en TPV Eixample')">Aplicar Rebaja</button></td>
+                        </tr>
+                        <tr>
+                            <td>#L-3914</td>
+                            <td>Empanada Atún Artesana</td>
+                            <td>FreshMarket Ruzafa</td>
+                            <td>34 ud</td>
+                            <td>En 2 días (16/09)</td>
+                            <td><span class="badge-risk-mid">MEDIO (65%)</span></td>
+                            <td><strong>Alertar TPV -15% Mañana</strong></td>
+                            <td><button class="btn-action" onclick="alert('Programada alerta preventiva')">Programar</button></td>
+                        </tr>
+                        <tr>
+                            <td>#L-3885</td>
+                            <td>Zumo Naranja Recién Exprimido</td>
+                            <td>FreshMarket Vallecas</td>
+                            <td>12 ud</td>
+                            <td>Hoy (14/09 20:00)</td>
+                            <td><span class="badge-risk-high">CRÍTICO (98%)</span></td>
+                            <td><strong>Donar a Banco de Alimentos</strong></td>
+                            <td><button class="btn-action" style="background: #2563eb;" onclick="alert('Notificación enviada a ONG Banco de Alimentos Local')">Enviar a ONG</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
