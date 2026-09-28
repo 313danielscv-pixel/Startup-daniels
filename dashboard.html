@@ -32,6 +32,33 @@
         .badge-risk-mid { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; }
         .btn-action { background: #059669; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
         .btn-action:hover { background: #047857; }
+        .demo-card { background: white; border: 1px solid #cbd5e1; border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; }
+        .demo-card h2 { font-size: 1.25rem; color: #0f172a; margin-bottom: 0.35rem; }
+        .demo-note { color: #64748b; font-size: 0.9rem; margin-bottom: 1.25rem; }
+        .demo-form { display: grid; grid-template-columns: repeat(3, minmax(150px, 1fr)); gap: 1rem; }
+        .demo-form label { display: flex; flex-direction: column; gap: 0.35rem; color: #334155; font-size: 0.85rem; font-weight: 600; }
+        .demo-form input, .demo-form select { width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px; color: #0f172a; background: white; font: inherit; }
+        .demo-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+        .demo-actions button { padding: 0.65rem 1rem; border: 0; border-radius: 6px; cursor: pointer; font: inherit; font-weight: 600; }
+        .demo-primary { background: #059669; color: white; }
+        .demo-secondary { background: #e2e8f0; color: #334155; }
+        .demo-result { display: none; margin-top: 1.25rem; padding: 1rem; border-radius: 8px; background: #f1f5f9; }
+        .demo-result.visible { display: block; }
+        .demo-result h3 { margin-bottom: 0.35rem; }
+        .demo-result p + p { margin-top: 0.35rem; }
+        .demo-status { min-height: 1.5rem; color: #047857; font-weight: 600; margin-top: 0.75rem; }
+        .demo-status.error { color: #b91c1c; }
+        @media (max-width: 900px) {
+            .dash-container { grid-template-columns: 1fr; }
+            .sidebar { padding: 1rem; }
+            .sidebar h2 { margin-bottom: 0.75rem; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .main-content { padding: 1rem; overflow-x: auto; }
+            .demo-form { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -49,10 +76,10 @@
             <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
                 <div>
                     <h1 style="font-size: 1.6rem; color: #0f172a;">Centro de Control de Mermas — FreshMarket S.A.</h1>
-                    <p style="color: #64748b; font-size: 0.9rem;">Monitoreo predictivo de caducidad en tiempo real | 5 Tiendas activas</p>
+                    <p style="color: #64748b; font-size: 0.9rem;">Prototipo interactivo con datos simulados | 5 tiendas de ejemplo</p>
                 </div>
                 <div style="background: white; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.85rem; font-weight: 600;">
-                    Estado Sistema: <span style="color: #059669;">● ML Model Active v2.4</span>
+                    Estado: <span style="color: #b45309;">● Modo demostración</span>
                 </div>
             </header>
 
@@ -88,6 +115,57 @@
                 </p>
             </div>
 
+            <section class="demo-card" aria-labelledby="demo-title">
+                <h2 id="demo-title">Prueba el recomendador de lotes</h2>
+                <p class="demo-note">Cambia los datos y calcula una recomendación de ejemplo. No aplica cambios reales en tiendas ni en TPV.</p>
+                <form id="demo-form" class="demo-form">
+                    <label for="demo-product">Tipo de producto
+                        <select id="demo-product">
+                            <option value="platos" data-risk="22">Plato preparado / sushi</option>
+                            <option value="pescado" data-risk="18">Pescado fresco</option>
+                            <option value="carne" data-risk="12">Carne fresca</option>
+                            <option value="lacteos" data-risk="8">Lácteos</option>
+                            <option value="panaderia" data-risk="12">Panadería</option>
+                            <option value="fruta" data-risk="5">Fruta y verdura</option>
+                        </select>
+                    </label>
+                    <label for="demo-stock">Unidades en stock
+                        <input id="demo-stock" type="number" min="1" max="5000" value="28" required>
+                    </label>
+                    <label for="demo-days">Días hasta caducidad
+                        <input id="demo-days" type="number" min="0" max="30" value="1" required>
+                    </label>
+                    <label for="demo-demand">Venta media estimada (ud/día)
+                        <input id="demo-demand" type="number" min="0" max="1000" step="0.5" value="8" required>
+                    </label>
+                    <label for="demo-price">Precio actual por unidad (€)
+                        <input id="demo-price" type="number" min="0.01" max="10000" step="0.01" value="9.90" required>
+                    </label>
+                    <label for="demo-store">Tienda de ejemplo
+                        <select id="demo-store">
+                            <option>FreshMarket Vallecas</option>
+                            <option>FreshMarket Eixample</option>
+                            <option>FreshMarket Ruzafa</option>
+                            <option>FreshMarket Sarrià</option>
+                            <option>FreshMarket Centro Madrid</option>
+                        </select>
+                    </label>
+                </form>
+                <div class="demo-actions">
+                    <button class="demo-primary" type="button" id="calculate-demo">Calcular recomendación</button>
+                    <button class="demo-secondary" type="button" data-scenario="normal">Probar escenario normal</button>
+                    <button class="demo-secondary" type="button" data-scenario="critical">Probar escenario crítico</button>
+                    <button class="demo-secondary" type="button" data-scenario="donation">Probar donación</button>
+                </div>
+                <div id="demo-result" class="demo-result" aria-live="polite">
+                    <h3 id="result-title"></h3>
+                    <p id="result-detail"></p>
+                    <p id="result-price"></p>
+                    <button class="btn-action" type="button" id="apply-demo-action"></button>
+                </div>
+                <p id="demo-status" class="demo-status" role="status"></p>
+            </section>
+
             <div class="table-card">
                 <h3 style="color: #0f172a; margin-bottom: 0.5rem;">Lotes Prioritarios con Riesgo de Caducidad (Acción Inmediata)</h3>
                 <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1rem;">Recomendación generada por el algoritmo de clasificación y aceleración de ventas.</p>
@@ -113,7 +191,7 @@
                             <td>Mañana (15/09)</td>
                             <td><span class="badge-risk-high">CRÍTICO (94%)</span></td>
                             <td><strong>Aplicar Descuento -30% HOY</strong></td>
-                            <td><button class="btn-action" onclick="alert('Descuento del 30% aplicado automáticamente en TPV Vallecas')">Aplicar Rebaja</button></td>
+                            <td><button class="btn-action" type="button" data-demo-action="Descuento del 30% simulado para FreshMarket Vallecas. No se ha modificado ningún TPV.">Simular rebaja</button></td>
                         </tr>
                         <tr>
                             <td>#L-3901</td>
@@ -123,7 +201,7 @@
                             <td>Mañana (15/09)</td>
                             <td><span class="badge-risk-high">ALTO (88%)</span></td>
                             <td><strong>Aplicar Descuento -30% HOY</strong></td>
-                            <td><button class="btn-action" onclick="alert('Descuento del 30% aplicado automáticamente en TPV Eixample')">Aplicar Rebaja</button></td>
+                            <td><button class="btn-action" type="button" data-demo-action="Descuento del 30% simulado para FreshMarket Eixample. No se ha modificado ningún TPV.">Simular rebaja</button></td>
                         </tr>
                         <tr>
                             <td>#L-3914</td>
@@ -133,7 +211,7 @@
                             <td>En 2 días (16/09)</td>
                             <td><span class="badge-risk-mid">MEDIO (65%)</span></td>
                             <td><strong>Alertar TPV -15% Mañana</strong></td>
-                            <td><button class="btn-action" onclick="alert('Programada alerta preventiva')">Programar</button></td>
+                            <td><button class="btn-action" type="button" data-demo-action="Alerta preventiva simulada para el lote de FreshMarket Ruzafa.">Simular alerta</button></td>
                         </tr>
                         <tr>
                             <td>#L-3885</td>
@@ -143,12 +221,108 @@
                             <td>Hoy (14/09 20:00)</td>
                             <td><span class="badge-risk-high">CRÍTICO (98%)</span></td>
                             <td><strong>Donar a Banco de Alimentos</strong></td>
-                            <td><button class="btn-action" style="background: #2563eb;" onclick="alert('Notificación enviada a ONG Banco de Alimentos Local')">Enviar a ONG</button></td>
+                            <td><button class="btn-action" type="button" style="background: #2563eb;" data-demo-action="Notificación de donación simulada. No se ha contactado con ninguna ONG.">Simular donación</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
+    <script>
+        const demoForm = document.getElementById("demo-form");
+        const demoResult = document.getElementById("demo-result");
+        const demoStatus = document.getElementById("demo-status");
+        const applyActionButton = document.getElementById("apply-demo-action");
+        let currentRecommendation = "";
+
+        function calculateRecommendation() {
+            if (!demoForm.reportValidity()) return;
+
+            const product = document.getElementById("demo-product");
+            const selectedProduct = product.options[product.selectedIndex];
+            const stock = Number(document.getElementById("demo-stock").value);
+            const days = Number(document.getElementById("demo-days").value);
+            const demand = Number(document.getElementById("demo-demand").value);
+            const price = Number(document.getElementById("demo-price").value);
+            const store = document.getElementById("demo-store").value;
+            const expectedSales = demand * Math.max(days, 1);
+            const stockPressure = stock / Math.max(expectedSales, 1);
+            const urgency = days <= 1 ? 25 : days <= 2 ? 15 : days <= 3 ? 8 : 0;
+            const risk = Math.min(99, Math.max(5, Math.round(
+                18 + Number(selectedProduct.dataset.risk) + urgency + Math.max(0, stockPressure - 1) * 25
+            )));
+
+            let recommendation;
+            let discount = 0;
+            if (days === 0) {
+                recommendation = "Valorar donación hoy, solo si el producto sigue siendo apto para consumo.";
+            } else if (risk >= 80) {
+                discount = 50;
+                recommendation = "Riesgo crítico: aplicar descuento del 50% y revisar el lote.";
+            } else if (risk >= 60) {
+                discount = 30;
+                recommendation = "Riesgo alto: aplicar descuento del 30%.";
+            } else if (risk >= 35) {
+                discount = 15;
+                recommendation = "Riesgo medio: aplicar descuento preventivo del 15%.";
+            } else {
+                recommendation = "Riesgo bajo: mantener el precio y volver a revisar más tarde.";
+            }
+
+            const discountedPrice = (price * (1 - discount / 100)).toFixed(2);
+            document.getElementById("result-title").textContent = `Riesgo estimado: ${risk}% — ${store}`;
+            document.getElementById("result-detail").textContent =
+                `${selectedProduct.text}: ${stock} unidades en stock, ${days} día(s) hasta caducidad y venta estimada de ${demand} ud/día. ${recommendation}`;
+            document.getElementById("result-price").textContent = discount
+                ? `Precio de ejemplo tras el descuento: ${discountedPrice} € (antes ${price.toFixed(2)} €).`
+                : "No se propone cambiar el precio en este escenario.";
+            currentRecommendation = days === 0 ? "Simular aviso de donación" : discount ? `Simular descuento del ${discount}%` : "Simular revisión posterior";
+            applyActionButton.textContent = currentRecommendation;
+            demoResult.classList.add("visible");
+            demoStatus.textContent = "";
+            demoStatus.classList.remove("error");
+        }
+
+        document.getElementById("calculate-demo").addEventListener("click", calculateRecommendation);
+        document.querySelectorAll("[data-scenario]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const scenario = button.dataset.scenario;
+                if (scenario === "normal") {
+                    document.getElementById("demo-product").value = "fruta";
+                    document.getElementById("demo-stock").value = 10;
+                    document.getElementById("demo-days").value = 6;
+                    document.getElementById("demo-demand").value = 8;
+                    document.getElementById("demo-price").value = "2.40";
+                } else if (scenario === "critical") {
+                    document.getElementById("demo-product").value = "platos";
+                    document.getElementById("demo-stock").value = 45;
+                    document.getElementById("demo-days").value = 1;
+                    document.getElementById("demo-demand").value = 6;
+                    document.getElementById("demo-price").value = "9.90";
+                } else {
+                    document.getElementById("demo-product").value = "pescado";
+                    document.getElementById("demo-stock").value = 12;
+                    document.getElementById("demo-days").value = 0;
+                    document.getElementById("demo-demand").value = 2;
+                    document.getElementById("demo-price").value = "5.40";
+                }
+                document.getElementById("demo-store").value = "FreshMarket Vallecas";
+                calculateRecommendation();
+            });
+        });
+
+        applyActionButton.addEventListener("click", () => {
+            if (!currentRecommendation) return;
+            demoStatus.textContent = `${currentRecommendation}: acción de demostración registrada para ${document.getElementById("demo-store").value}. No se han modificado precios, inventario ni TPV.`;
+            demoStatus.classList.remove("error");
+        });
+
+        document.querySelectorAll("[data-demo-action]").forEach((button) => {
+            button.addEventListener("click", () => {
+                demoStatus.textContent = button.dataset.demoAction;
+                demoStatus.classList.remove("error");
+            });
+        });
+    </script>
 </body>
 </html>
